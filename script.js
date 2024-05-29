@@ -6,9 +6,10 @@ button.addEventListener("click", initializeGrid);
 // Generates squares to be colored in by fuction colorBox
 const container = document.querySelector("#container");
 
-function createBox() {
+function createBox(squareSize) {
     const gridbox = document.createElement("div");
     gridbox.classList.add("gridbox");
+    gridbox.setAttribute("style", `height: ${800 / squareSize}px; width: ${800 / squareSize}px;`);
 
     container.appendChild(gridbox);
 }
@@ -17,7 +18,7 @@ function createBox() {
 function generateNewGrid(squareSize) {
     for (let i = 0; i < (squareSize ** 2); i++) {
         console.log("Grid is being generated!");
-        createBox();
+        createBox(squareSize);
     }
 }
 
@@ -32,7 +33,7 @@ function initMouseOver() {
 // Colors squares when moused over
 function colorBox(e) {
     console.log("Moused over!");
-    e.target.setAttribute("style", "background: black");
+    e.target.style.backgroundColor = "black";
 }
 
 // Clears grid for clean sketchpad
