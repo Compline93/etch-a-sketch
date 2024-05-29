@@ -14,8 +14,8 @@ function createBox() {
 }
 
 // Creates a new grid for boxes
-function generateNewGrid() {
-    for (let i = 0; i < 256; i++) {
+function generateNewGrid(squareSize) {
+    for (let i = 0; i < (squareSize ** 2); i++) {
         console.log("Grid is being generated!");
         createBox();
     }
@@ -35,16 +35,24 @@ function colorBox(e) {
     e.target.setAttribute("style", "background: black");
 }
 
+// Clears grid for clean sketchpad
 function clearGrid() {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
 }
 
+// Prompts user for size of sketchpad square
+function getSquareSize() {
+    let userInput = prompt("Enter size of square (max: 100).");
+    return Number(userInput);
+}
+
 // Initializes sketchpad
 function initializeGrid() {
     clearGrid();
-    generateNewGrid();
+    let squareSize = getSquareSize();
+    generateNewGrid(squareSize);
     initMouseOver();
 }
 
